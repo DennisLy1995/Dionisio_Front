@@ -1,0 +1,40 @@
+{
+    "listOfMovies":[
+        {
+            "title":"Angry Birds 2",
+            "sinopsis":"Pelicula de pajaros basada en un videojuego",
+            "clasification":"TP-Animation",
+            "image":"https://static.cinepolis.com/img/peliculas/31930/1/1/31930.jpg"
+        },
+        {
+            "title":"El rey leon",
+            "sinopsis":"El rey leon de disney.",
+            "clasification":"TP7-Animation",
+            "image":"https://static.cinepolis.com/img/peliculas/31675/1/1/31675.jpg"
+        },
+        {
+            "title":"Historias de miedo para contar en la oscuridad",
+            "sinopsis":"Pelicula de terror de Guillermo del Toro",
+            "clasification":"M15-Terror",
+            "image":"https://static.cinepolis.com/img/peliculas/31769/1/1/31769.jpg"
+        },
+        {
+            "title":"Rapidos y furiosos",
+            "sinopsis":"Pelicula de accion basada en carros",
+            "clasification":"M15-Action/Adventure",
+            "image":"https://static.cinepolis.com/img/peliculas/31926/1/1/31926.jpg"
+        },
+        {
+            "title":"Paw patrol: mighty pups",
+            "sinopsis":"Pelicula de niños de perros",
+            "clasification":"TP-Animation",
+            "image":"https://static.cinepolis.com/img/peliculas/31773/1/1/31773.jpg"
+        },
+        {
+            "title":"Anna: el peligro tiene nombre",
+            "sinopsis":"Thriller de accion",
+            "clasification":"M18-Action",
+            "image":"https://static.cinepolis.com/img/peliculas/32005/1/1/32005.jpg"
+        }
+    ]
+}

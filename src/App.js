@@ -1,24 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Dionisio Movie Theatre?
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src="https://4vector.com/i/free-vector-tape-file-reel-clip-art_105803_Tape_File_Reel_clip_art_medium.png" className="App-logo" alt="logo" />
     </div>
   );
 }
