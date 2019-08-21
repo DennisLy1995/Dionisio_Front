@@ -55,9 +55,9 @@ class Login extends Component{
         }else
             return  (
                 <div className="App">
-                    <img src="https://icon-library.net/images/cinema-icon/cinema-icon-5.jpg" className="App-logo" alt="logo" />
+                    
                     <div className="container">
-                        <h1>Login</h1>
+                        
                         <div className="col align-items-center">
                             <div className="card">
                                 <form className="card-body">
