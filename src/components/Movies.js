@@ -31,8 +31,7 @@ class Movies extends Component{
         })
         return  (
             <div className="App">
-                <img src="https://icon-library.net/images/cinema-icon/cinema-icon-5.jpg" className="App-logo" alt="logo" />
-                <div className="container">
+                <div className="container" style={{marginTop:'5%'}}>
                     <div className="row mt-4">
                         {listMovies}
                     </div>

@@ -10,6 +10,11 @@ body {
   background-image: url("https://wallpaperplay.com/walls/full/7/f/f/94796.jpg");
 }
 
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .align-items-center{
   margin-top: 12%;
 }
@@ -20,10 +25,19 @@ body {
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
   z-index: 1;
+  opacity: 0.7;
+  height: 10%;
 }
 
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+
+/*Styles of the movie cards*/
+
+.card-header img{
+  border-radius:4%;
 }
+
+.card-header {
+  border-bottom-color: #EF2323;
+}
+

@@ -62,13 +62,11 @@ class Register extends Component{
     render(){
         return  (
             <div className="App">
-                <img src="https://icon-library.net/images/cinema-icon/cinema-icon-5.jpg" className="App-logo" alt="logo" />
                 <div className="container">
                     <div className="col align-items-center">
                         <div className="justify-content-center">
                             <div className="panel panel-default">
                                 <div className="panel-heading">
-                                <h1>Register</h1>
                                 </div>
                                 <div className="panel-body card">
                                     <form role="form" className="card-body">
