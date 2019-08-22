@@ -62,7 +62,7 @@ class Register extends Component{
     render(){
         return  (
             <div className="App">
-                <div className="container">
+                <div className="container" id="register-container">
                     <div className="col align-items-center">
                         <div className="justify-content-center">
                             <div className="panel panel-default">

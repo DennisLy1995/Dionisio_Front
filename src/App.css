@@ -1,11 +1,17 @@
 .App {
-  margin: 0;
+  width:100%; 
+  height:100%; 
+  float: left;
+  display: block;
+  display: inline-block;
+  margin-top: -3%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://wallpaperplay.com/walls/full/7/f/f/94796.jpg");
+  /*background-image: url("https://wallpaperplay.com/walls/full/7/f/f/94796.jpg");*/
+  
 }
 
 .code {
@@ -45,4 +51,9 @@
 .mt-3:hover{
   opacity: 1;
   transition: opacity 1s;
+}
+
+
+#register-container{
+  max-width: 550px;
 }
