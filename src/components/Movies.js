@@ -15,13 +15,13 @@ class Movies extends Component{
     render(){
         const listMovies = this.state.listOfMovies.map((movie,i)=>{
             return(
-                <div className="col-md-4">
-                    <div className="card mt-4">
+                <div className="col-md-3">
+                    <div className="card mt-3">
                         <div className="card-header">
                             <h3>{movie.title}</h3>
-                            <img src={movie.image}/>
                         </div>
                         <div className="card-body">
+                            <img className="card-img-top" src={movie.image}/>
                             <span className="badge badge-pill badge-danger ml-2">{movie.clasification}</span>
                             <p>{movie.sinopsis}</p>
                         </div>
@@ -32,7 +32,7 @@ class Movies extends Component{
         return  (
             <div className="App">
                 <div className="container" style={{marginTop:'5%'}}>
-                    <div className="row mt-4">
+                    <div className="row mt-3">
                         {listMovies}
                     </div>
                 </div>

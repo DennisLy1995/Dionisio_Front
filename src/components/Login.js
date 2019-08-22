@@ -13,7 +13,7 @@ class Login extends Component{
         this.handleInputChange  = this.handleInputChange.bind(this);
         this.handleLogin        = this.handleLogin.bind(this);
         this.handleRegister     = this.handleRegister.bind(this);
-    };
+    }
 
     handleLogin(e) {
         e.preventDefault();
