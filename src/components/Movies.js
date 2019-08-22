@@ -30,13 +30,14 @@ class Movies extends Component{
             )
         })
         return  (
-            <div className="App">
-                <div className="container" style={{marginTop:'5%'}}>
-                    <div className="row mt-3">
-                        {listMovies}
-                    </div>
-                </div>
-            </div>);
+          <div className="App">
+            <div className="container" style={{marginTop:'5%'}}>
+              <h1 className="text-center text-white bg-dark">Lista de peliculas</h1>
+              <div className="row mt-3">
+                {listMovies}
+              </div>
+            </div>
+          </div>);
     }
 }
 

@@ -1,23 +1,48 @@
 .App {
-  /*background: #00B4DB;  /* fallback for old browsers */
-  /*background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
-  /*background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  text-align: center;
-  height: 100vh;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://wallpaperplay.com/walls/full/7/f/f/94796.jpg");
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 15vmin;
-  pointer-events: none;
+.code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
+.align-items-center{
+  margin-top: 12%;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar {
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.8;
+  height: 10%;
+}
+
+/*Styles of the movie cards*/
+
+.card-header img{
+  border-radius:4%;
+}
+
+.card-header {
+  border-bottom-color: #EF2323;
+}
+
+.mt-3{
+  opacity: 0.9;
+  transition: opacity 1s;
+}
+
+.mt-3:hover{
+  opacity: 1;
+  transition: opacity 1s;
 }

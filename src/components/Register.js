@@ -51,7 +51,7 @@ class Register extends Component{
             password_confirmation:""
         });
     }
-    
+
     handleInputChange(e) {
         const {value, name} = e.target;
         console.log(value, name);
@@ -133,14 +133,8 @@ class Register extends Component{
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <button 
-                                                type="submit" 
-                                                className="btn btn-info btn-block"
-                                                onClick={this.handleLogin}>
-                                                Login
-                                            </button>
-                                            <button 
-                                                type="submit" 
+                                            <button
+                                                type="submit"
                                                 className="btn btn-info btn-block"
                                                 onClick={this.handleRegister}>
                                                 Register
