@@ -61,16 +61,16 @@ class App extends Component{
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <button type="button" className="btn btn-link" onClick={this.handleHome}>Home<span className="sr-only">(current)</span></button>
+                    <button type="button"  id="buttonHome" className="btn btn-link" onClick={this.handleHome} >Home<span className="sr-only">(current)</span></button>
                   </li>
                   <li className="nav-item">
-                    <button type="button " className="btn btn-link" onClick={this.handleRegister}>Register</button>
+                    <button type="button " id="buttonRegister" className="btn btn-link" onClick={this.handleRegister} >Register</button>
                   </li>
                   <li className="nav-item">
-                    <button type="button" className="btn btn-link" onClick={this.handleMovies}>Movies</button>
+                    <button type="button" id="buttonMovies" className="btn btn-link" onClick={this.handleMovies} >Movies</button>
                   </li>
                   <li className="nav-item">
-                    <button type="button" className="btn btn-link" onClick={this.handleLogOut}>Logout</button>
+                    <button type="button"  id="buttonLogOut" className="btn btn-link" onClick={this.handleLogOut} >Logout</button>
                   </li>
                 </ul>
               </div>
