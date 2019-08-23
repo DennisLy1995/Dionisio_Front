@@ -45,6 +45,7 @@ class Login extends Component{
                 <form className="card-body">
                   <div className="form-group">
                     <input
+                      id="username"
                       type="text"
                       name="username"
                       className="form-control"
@@ -55,6 +56,7 @@ class Login extends Component{
                   </div>
                   <div className="form-group">
                     <input
+                      id="password"
                       type="text"
                       name="password"
                       className="form-control"
