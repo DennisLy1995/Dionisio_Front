@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './../App.css';
+import './controlScripts/loginFunc';
+
 
 class Login extends Component{
     constructor(){
@@ -18,9 +20,9 @@ class Login extends Component{
         if(this.state.username !== "" &&
            this.state.password !== ""){
             this.state.redirectRegister=true;
-            alert("Campos llenos.!");
+            FuncLogin();
         }else{
-            alert("Olvidaste llenar algun campo.!");
+            alert("Olvidaste llenar uno de los campos!!!");
         }
         this.setState({
             username: '',
@@ -81,5 +83,12 @@ class Login extends Component{
       );
     }
 }
+
+
+function FuncLogin(){
+  //var a = new 
+  
+}
+
 
 export default Login;

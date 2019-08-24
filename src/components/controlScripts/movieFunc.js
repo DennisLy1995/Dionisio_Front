@@ -1,7 +1,7 @@
 let actionController = new ActionsController();
 
-function login(){
+function login(userName, password){
 
-    actionController.DeleteToAPI();
+    
 
 }
