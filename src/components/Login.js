@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './../App.css';
-import './controlScripts/loginFunc';
-
+import axios from 'axios';
 
 class Login extends Component{
     constructor(){
@@ -69,9 +68,11 @@ class Login extends Component{
                   </div>
                   <div className="row">
                     <button
-                      type="submit"
+                      id="buttonLogin"
+                      //type="submit"
                       className="btn btn-info btn-block"
-                      onClick={this.handleLogin}>
+                      onClick={this.handleLogin}
+                      >
                       Login
                     </button>
                   </div>
@@ -82,11 +83,18 @@ class Login extends Component{
         </div>
       );
     }
+
 }
 
 
 function FuncLogin(){
-  //var a = new 
+  
+  let email = document.getElementById("username").value;
+  var URL = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/GetAccount/"+email;
+  axios.get(URL).then(function (response) {
+    // handle success
+    console.log(response);
+  });
   
 }
 

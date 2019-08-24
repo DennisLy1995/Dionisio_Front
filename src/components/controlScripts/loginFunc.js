@@ -1,18 +1,20 @@
-/*let actionController = new ActionsController();*/
+let actionController = new ActionsController();
 
-function login(){
+var a = document.getElementById("buttonLogin");
+a.addEventListener("click", loginTemp());
 
-    this.login = function(){
+
+ function loginTemp() {
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
-        
-        alert("User name: " + username + " Password: " + password );
-    }
-  
-    
-  
-    
-    /*let URL = actionController.URL_API + "/AllAccounts";
-    let accounts = actionController.GetToAPI(URL);*/
-    
-  }
+
+        alert("User name: " + username + " Password: " + password);
+
+        let URL = actionController.URL_API + "/AllAccounts";
+        let accounts = actionController.GetToAPI(URL);
+
+};
+
+$( document ).ready(function() {
+    alert( "ready!" );
+});
