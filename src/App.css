@@ -40,7 +40,7 @@
 }
 
 .card-header {
-  border-bottom-color: #EF2323;
+  border-bottom-color: #c1c1f0;
 }
 
 .mt-3{
@@ -53,8 +53,12 @@
   transition: opacity 1s;
 }
 
+.card-body{
+  transition: background-color 0.5s ease-out;
+}
+
 .card-body:hover{
-  background-color: #b3b3b3;
+  background-color: #c1c1f0;
   transition: background-color 0.5s ease-out;
 }
 

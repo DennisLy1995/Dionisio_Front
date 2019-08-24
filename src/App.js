@@ -5,6 +5,7 @@ import Login    from './components/Login.js'
 import Register from './components/Register.js'
 import Movies   from './components/Movies.js'
 import RegisterMovie from './components/RegisterMovie.js'
+import MyAccount from './components/MyAccount.js'
 
 class App extends Component{
   constructor(props){
@@ -19,6 +20,8 @@ class App extends Component{
     this.handleLogOut         = this.handleLogOut.bind(this);         /*redirectComponent = 2*/
     this.handleMovies         = this.handleMovies.bind(this);         /*redirectComponent = 3*/
     this.handleHome           = this.handleHome.bind(this);           /*redirectComponent = 4*/
+    this.handleMyAccount      = this.handleMyAccount.bind(this);           /*redirectComponent = 4*/
+    
   };
 
   handleRegisterMovie(e){
@@ -56,6 +59,13 @@ class App extends Component{
     });
   };
 
+  handleMyAccount(e){
+    e.preventDefault();
+    this.setState({
+      contenido:5
+    });
+  };
+
 
   render(){
     return (
@@ -70,7 +80,7 @@ class App extends Component{
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <button type="button"  id="buttonHome" className="btn btn-link" onClick={this.handleHome} >Home<span className="sr-only">(current)</span></button>
+                    <button type="button"  id="buttonHome" className="btn btn-link" onClick={this.handleHome} >Login<span className="sr-only">(current)</span></button>
                   </li>
                   <li className="nav-item">
                     <button type="button " id="buttonRegister" className="btn btn-link" onClick={this.handleRegister} >Register</button>
@@ -82,7 +92,7 @@ class App extends Component{
                     <button type="button" id="buttonMovies" className="btn btn-link" onClick={this.handleMovies} >Movies</button>
                   </li>
                   <li className="nav-item">
-                    <button type="button"  id="buttonLogOut" className="btn btn-link" onClick={this.handleLogOut} >Logout</button>
+                    <button type="button" id="buttonMyAccount" className="btn btn-link" onClick={this.handleMyAccount} >My Account</button>
                   </li>
                 </ul>
               </div>
@@ -103,6 +113,7 @@ class App extends Component{
       case 1: return  <Register/>;      break;/*Register*/
       case 2: return  <p></p>;          break;/*Logout*/
       case 3: return  <Movies/>;        break;/*Movies*/
+      case 5: return <MyAccount/>;      break;/*MyAccount*/
       default: return <Login/>;         break;/*Home*/
 }
 
