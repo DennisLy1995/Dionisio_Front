@@ -6,7 +6,7 @@ class Login extends Component{
     constructor(){
         super();
         this.state={
-            username:"",
+            email:"",
             password:"",
         };
         this.handleInputChange  = this.handleInputChange.bind(this);
@@ -16,16 +16,14 @@ class Login extends Component{
     handleLogin(e) {
         e.preventDefault();
         /*this.props.onAddTodo(this.state);*/
-        if(this.state.username !== "" &&
-           this.state.password !== ""){
+        if(this.state.email !== ""){
             this.state.redirectRegister=true;
             FuncLogin();
         }else{
             alert("Olvidaste llenar uno de los campos!!!");
         }
         this.setState({
-            username: '',
-            password: '',
+            email: ''
         });
     }
 
@@ -46,24 +44,13 @@ class Login extends Component{
                 <form className="card-body">
                   <div className="form-group">
                     <input
-                      id="username"
+                      id="email"
                       type="text"
-                      name="username"
+                      name="email"
                       className="form-control"
-                      value={this.state.username}
+                      value={this.state.email}
                       onChange={this.handleInputChange}
-                      placeholder="Username"
-                    />
-                  </div>
-                  <div className="form-group">
-                    <input
-                      id="password"
-                      type="text"
-                      name="password"
-                      className="form-control"
-                      value={this.state.password}
-                      onChange={this.handleInputChange}
-                      placeholder="Password"
+                      placeholder="Email"
                     />
                   </div>
                   <div className="row">
@@ -88,12 +75,16 @@ class Login extends Component{
 
 
 function FuncLogin(){
+
+  var response;
   
-  let email = document.getElementById("username").value;
+  let email = document.getElementById("email").value;
   var URL = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/GetAccount/"+email;
-  axios.get(URL).then(function (response) {
-    // handle success
-    console.log(response);
+  console.log(URL);
+  axios.get(URL).then(res => {
+    
+    response = res;
+  
   });
   
 }
