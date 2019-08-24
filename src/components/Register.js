@@ -146,7 +146,6 @@ function FuncRegister (){
     let jsonValue = { name_ACCOUNT: name, last_NAME: lastname,  email: email, role_ACCOUNT: role_account};
 
     axios.post(URL, jsonValue).then(res => {
-        console.log(res);
         if(res){
             alert("Usuario registrado.");
         }else{

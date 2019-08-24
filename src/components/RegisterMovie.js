@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './../App.css';
+import axios from 'axios';
 
 class Register extends Component{
     constructor(){
@@ -121,5 +122,35 @@ class Register extends Component{
     }
 }
 
+function funcRegisterMovie(){
+    var urlMov = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/registerMovie";
+    var urlPos = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/registerMoviePoster";
+
+    let name = document.getElementById("name").value;
+    let director = document.getElementById("director").value;
+    let studio = document.getElementById("studio").value;
+    let posterUrl = document.getElementById("posterURL").value;
+
+    let jsonMovieValue = {name: name, director: director, studio: studio}
+
+    axios.post(urlMov, jsonMovieValue).then(res => {
+        if(res){
+            alert("Película registrada.");
+        }else{
+            alert("Se produjo un error.");
+        }
+    })
+}
+
+function funcGetMovie(name){
+    let ROOT = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/";
+    let URL = ROOT + "GetMovie/"+name;
+    let movie = {};
+    axios.get(URL).then(res => {
+
+        movie = res.data;
+
+      });
+}
 
 export default Register;
