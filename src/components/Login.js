@@ -90,6 +90,7 @@ function FuncLogin() {
 
   var checker = 0;
   let email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
   var ROOT = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/";
   var URL = ROOT + "GetAccount/" + email;
   var usuario;
@@ -99,41 +100,53 @@ function FuncLogin() {
 
   var temp;
 
-
-   axios.get(URL).then(res => {
-    temp = res;
-
-    if (res.status == 200) {
-      checker = 1;
-      console.log("El valor de " + checker + "jaja");
-      usuario = res.data.name_ACCOUNT;
-      id = res.data.account_ID;
-      emailAccount = res.data.email;
-      role = res.data.role_ACCOUNT;
-      console.log(id + " " + usuario + " " + emailAccount + " " + role + " " + checker);
-
-    } else {
-      alert("Correo no registrado.");
-    }
-
-  });
-
-  console.log("El valor despues del primer GET: " + checker);
-
-  if (checker == 1) {
-    URL = ROOT + "GetEmail/" + email;
+  try {
     axios.get(URL).then(res => {
-      if (res.status = 200) {
-        console.log(res);
-        sessionStorage.setItem("id", id);
-        sessionStorage.setItem("usuario", usuario);
-        sessionStorage.setItem("email", emailAccount);
-        sessionStorage.setItem("role", role);
-        alert("Sesion iniciada.");
+      temp = res;
+
+      if (res.status == 200) {
+        checker = 1;
+        console.log("Primer GET " + checker);
+        usuario = res.data.name_ACCOUNT;
+        id = res.data.account_ID;
+        emailAccount = res.data.email;
+        role = res.data.role_ACCOUNT;
+        console.log(id + " " + usuario + " " + emailAccount + " " + role + " " + checker);
+
       } else {
-        alert("Contraseña incorrecta.")
+        alert("Correo no registrado.");
       }
     });
+  } catch (err) {
+    alert("No se ha podido iniciar sesion");
+  }
+
+
+  try {
+    setTimeout(() => {
+
+      console.log("El valor despues del primer GET: " + checker);
+
+      if (checker == 1) {
+        URL = ROOT + "GetEmail/" + email;
+        axios.get(URL).then(res => {
+          console.log(res);
+          console.log(res.data.password + " | " + password);
+          if (res.status = 200 && res.data.password_EMAIL == password) {
+            sessionStorage.setItem("id", id);
+            sessionStorage.setItem("usuario", usuario);
+            sessionStorage.setItem("email", emailAccount);
+            sessionStorage.setItem("role", role);
+            alert("Sesion iniciada.");
+          } else {
+            alert("Contraseña incorrecta.")
+          }
+        });
+      }
+
+    }, 2000);
+  } catch (err) {
+    alert("No se ha podido iniciar sesion");
   }
 
 }
