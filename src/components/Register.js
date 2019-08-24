@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import './../App.css';
+import axios from 'axios';
 
 class Register extends Component{
     constructor(){
         super();
         this.state={
             name:"",
-            username:"",
-            email:"",
-            password:"",
-            password_confirmation:""
+            lastname:"",
+            email:""
         };
 
         this.handleInputChange  = this.handleInputChange.bind(this);
@@ -20,22 +19,17 @@ class Register extends Component{
     handleRegister(e) {
         e.preventDefault();
         /*this.props.onAddTodo(this.state);*/
-        if(this.state.password !=="" && this.state.password_confirmation!=="" &&
-           this.state.email!=="" && this.state.username!=="" && this.state.name!==""){
-            if(this.state.password === this.state.password_confirmation){
-                alert("Todos los campos fueron ingresados con exito.!");
-            }else{
-                alert("Las contraseñas no son iguales.!");
-            }
+        if(this.state.email!=="" && 
+        this.state.lastname!=="" && 
+        this.state.name!==""){
+            FuncRegister();
         }else{
             alert("Quedaron campos vacios.!");
         }
         this.setState({
             name:"",
-            username:"",
-            email:"",
-            password:"",
-            password_confirmation:""
+            lastname:"",
+            email:""
         });
     }
 
@@ -45,10 +39,8 @@ class Register extends Component{
         alert("Debo renderizar el login");
         this.setState({
             name:"",
-            username:"",
-            email:"",
-            password:"",
-            password_confirmation:""
+            lastname:"",
+            email:""
         });
     }
 
@@ -75,6 +67,7 @@ class Register extends Component{
                                                 <div className="form-group">
                                                     <input
                                                         type="text"
+                                                        id="name"
                                                         name="name"
                                                         className="form-control"
                                                         value={this.state.name}
@@ -87,11 +80,12 @@ class Register extends Component{
                                                 <div className="form-group">
                                                     <input
                                                         type="text"
-                                                        name="username"
+                                                        id="lastname"
+                                                        name="lastname"
                                                         className="form-control"
-                                                        value={this.state.username}
+                                                        value={this.state.lastname}
                                                         onChange={this.handleInputChange}
-                                                        placeholder="Username"
+                                                        placeholder="Lastname"
                                                     />
                                                 </div>
                                             </div>
@@ -99,6 +93,7 @@ class Register extends Component{
                                         <div className="form-group">
                                             <input
                                                 type="email"
+                                                id="email"
                                                 name="email"
                                                 className="form-control"
                                                 value={this.state.email}
@@ -110,27 +105,17 @@ class Register extends Component{
                                             <div className="col-xs-6 col-sm-6 col-md-6">
                                                 <div className="form-group">
                                                     <input
-                                                        type="password"
-                                                        name="password"
+                                                        type="text"
+                                                        id="role_account"
+                                                        name="role_account"
                                                         className="form-control"
-                                                        value={this.state.password}
+                                                        value={"User"}
                                                         onChange={this.handleInputChange}
-                                                        placeholder="Password"
+                                                        placeholder="User"
+                                                        disabled
                                                     />
                                                 </div>
                                         </div>
-                                        <div className="col-xs-6 col-sm-6 col-md-6">
-                                                <div className="form-group">
-                                                <input
-                                                        type="password"
-                                                        name="password_confirmation"
-                                                        className="form-control"
-                                                        value={this.state.password_confirmation}
-                                                        onChange={this.handleInputChange}
-                                                        placeholder="Password_Confirmation"
-                                                    />
-                                                </div>
-                                            </div>
                                         </div>
                                         <div className="row">
                                             <button
@@ -149,6 +134,25 @@ class Register extends Component{
             </div>
             );
     }
+}
+
+function FuncRegister (){
+    var URL = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/registerAccount";
+    
+    let name = document.getElementById("name").value;
+    let lastname = document.getElementById("lastname").value;
+    let email = document.getElementById("email").value;
+    let role_account = "User";
+    let jsonValue = { name_ACCOUNT: name, last_NAME: lastname,  email: email, role_ACCOUNT: role_account};
+
+    axios.post(URL, jsonValue).then(res => {
+        console.log(res);
+        if(res){
+            alert("Usuario registrado.");
+        }else{
+            alert("Se produjo un error.");
+        }
+    })
 }
 
 export default Register;
