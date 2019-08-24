@@ -4,6 +4,7 @@ import './App.css';
 import Login    from './components/Login.js'
 import Register from './components/Register.js'
 import Movies   from './components/Movies.js'
+import RegisterMovie from './components/RegisterMovie.js'
 
 class App extends Component{
   constructor(props){
@@ -11,12 +12,20 @@ class App extends Component{
     console.log("Si entre al constructor jaja pero no se que pasa aca jaja");
     this.state = {
       username : "",
-      contenido:1
+      contenido:4
     };
-    this.handleRegister = this.handleRegister.bind(this); /*redirectComponent = 1*/
-    this.handleLogOut   = this.handleLogOut.bind(this);   /*redirectComponent = 2*/
-    this.handleMovies   = this.handleMovies.bind(this);   /*redirectComponent = 3*/
-    this.handleHome     = this.handleHome.bind(this);     /*redirectComponent = 4*/
+    this.handleRegisterMovie  = this.handleRegisterMovie.bind(this);  /*redirectComponent = 1*/
+    this.handleRegister       = this.handleRegister.bind(this);       /*redirectComponent = 1*/
+    this.handleLogOut         = this.handleLogOut.bind(this);         /*redirectComponent = 2*/
+    this.handleMovies         = this.handleMovies.bind(this);         /*redirectComponent = 3*/
+    this.handleHome           = this.handleHome.bind(this);           /*redirectComponent = 4*/
+  };
+
+  handleRegisterMovie(e){
+    e.preventDefault();
+    this.setState({
+      contenido:0
+    });
   };
 
   handleRegister(e){
@@ -67,6 +76,9 @@ class App extends Component{
                     <button type="button " id="buttonRegister" className="btn btn-link" onClick={this.handleRegister} >Register</button>
                   </li>
                   <li className="nav-item">
+                    <button type="button " id="buttonRegister" className="btn btn-link" onClick={this.handleRegisterMovie} >Register Movie</button>
+                  </li>
+                  <li className="nav-item">
                     <button type="button" id="buttonMovies" className="btn btn-link" onClick={this.handleMovies} >Movies</button>
                   </li>
                   <li className="nav-item">
@@ -85,15 +97,13 @@ class App extends Component{
   }
 }
 
-function LayoutContendio(props) {
-
- switch(props.contenido) {
-
-  case 1: return  <Register/>; break;/*Register*/
-  case 2: return  <p></p>; break;/*Logout*/
-  case 3: return  <Movies/>; break;/*Movies*/
-  default: return <Login/>; break;/*Home*/
-
+  function LayoutContendio(props) {
+    switch(props.contenido) {
+      case 0: return  <RegisterMovie/>; break;/*RegisterMovie*/
+      case 1: return  <Register/>;      break;/*Register*/
+      case 2: return  <p></p>;          break;/*Logout*/
+      case 3: return  <Movies/>;        break;/*Movies*/
+      default: return <Login/>;         break;/*Home*/
 }
 
 }
