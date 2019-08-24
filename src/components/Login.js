@@ -39,9 +39,9 @@ class Login extends Component {
   render() {
     return (
       <div className="App">
-        <div className="container" id="login-container">
-          <div className="col align-items-center">
-            <div className="card">
+        <div className="container" id="login-container" >
+          <div className="col align-items-center" >
+            <div className="card" style={{backgroundColor: "#343a40"}}>
               <form className="card-body">
                 <div className="form-group">
                   <input
@@ -138,7 +138,7 @@ function FuncLogin() {
             sessionStorage.setItem("email", emailAccount);
             sessionStorage.setItem("role", role);
             alert("Sesion iniciada.");
-            
+
           } else {
             alert("Contraseña incorrecta.")
           }
