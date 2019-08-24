@@ -53,11 +53,12 @@
   transition: opacity 1s;
 }
 
-.card-body{
+.col-md-3{
   transition: background-color 0.5s ease-out;
+  border-radius: 3%;
 }
 
-.card-body:hover{
+.col-md-3:hover{
   background-color: #c1c1f0;
   transition: background-color 0.5s ease-out;
 }

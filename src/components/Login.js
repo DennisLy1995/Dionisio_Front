@@ -138,6 +138,7 @@ function FuncLogin() {
             sessionStorage.setItem("email", emailAccount);
             sessionStorage.setItem("role", role);
             alert("Sesion iniciada.");
+            
           } else {
             alert("Contraseña incorrecta.")
           }
