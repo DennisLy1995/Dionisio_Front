@@ -25,7 +25,6 @@ class Register extends Component {
             this.state.studio !== "" &&
             this.state.posterURL !== "") {
             funcRegisterMovie();
-            alert("Sos un genio. Creaste una pelicula..!!");
         } else {
             alert("Quedaron campos vacios.!");
         }
@@ -39,7 +38,6 @@ class Register extends Component {
 
     handleInputChange(e) {
         const { value, name } = e.target;
-        console.log(value, name);
         this.setState({
             [name]: value
         });
@@ -53,7 +51,7 @@ class Register extends Component {
                             <div className="panel panel-default">
                                 <div className="panel-heading">
                                 </div>
-                                <div className="panel-body card" style={{backgroundColor: "#343a40"}}>
+                                <div className="panel-body card" style={{ backgroundColor: "#343a40" }}>
                                     <form role="form" className="card-body">
                                         <div className="row">
                                             <div className="col-xs-6 col-sm-6 col-md-6">
@@ -124,7 +122,7 @@ class Register extends Component {
     }
 }
 
-async function funcRegisterMovie() {
+function funcRegisterMovie() {
     var urlMov = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/registerMovie";
     var urlPos = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/registerMoviePoster";
 
@@ -143,7 +141,7 @@ async function funcRegisterMovie() {
         }
     })
 
-    
+
 
     /*let promise = new Promise((resolve, reject) => {
         setTimeout(() => resolve(funcGetMovie(name)), 1000)
@@ -154,27 +152,33 @@ async function funcRegisterMovie() {
     console.log(movie);
     console.log("El valor despues del metodo es:" + movie);
     console.log("hola");*/
-
-    let ROOT = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/";
-    let URL = ROOT + "GetMovie/" + name;
-    let movie;
-    let getMovie = async () => {
-        let res = axios.get(URL);
-        let { data } = res.data;
-        movie = data;
-    };
-
-    console.log(movie);
+      console.log("Antes del GET, despues del primer POST");
     
+      let movie;
+      let data;
 
-    /*setTimeout(() => {
+      setTimeout(() => {
+        let ROOT = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/";
+        let URL = ROOT + "GetMovie/" + name;
+        
+        let res = axios.get(URL).then(res => {
+            data = res.data;
+        });
 
-        console.log(movie);
-        //let idMovie = movie.movie_ID;
+        setTimeout(() => {
+            movie = data;
+            console.log("Dentro del intervalo: ");
+            console.log(movie);
 
-        console.log(idMovie);
+            
+        }, 1000);
+        
+    }, 1000);
+    setTimeout(() => {
+        console.log("Fuera del intervalo: ");
+        console.log(movie.movie_ID);
 
-        let jsonMoviePosterValue = {movie_ID: idMovie, presale_ID: 1, premiere_ID: 1, title:name, url_POSTER: posterUrl};
+        let jsonMoviePosterValue = {movie_ID: movie.movie_ID, presale_ID: 1, premiere_ID: 1, title:name, url_POSTER: posterUrl};
 
         axios.post(urlPos, jsonMoviePosterValue).then(res => {
             if(res){
@@ -183,37 +187,7 @@ async function funcRegisterMovie() {
                 alert("Se produjo un error.");
             }
         })
-
-    }, 2000);*/
-}
-
-async function funcGetMovie(name) {
-
-    let ROOT = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/";
-    let URL = ROOT + "GetMovie/" + name;
-    let movie = {};
-
-    let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve(
-            axios.get(URL).then(res => {
-                movie = res.data;
-                //console.log("En el res");
-                //console.log(movie);
-            })
-        ), 1000)
-      });
-    
-    
-    /*setTimeout(() => {
-        
-        console.log("Despues del res");
-        console.log("El valor de movies es: " + movie);
-
-     }, 3000);
-     
-     setTimeout(() => {}, 10000);*/
-
-     return movie;
+    }, 5000);
 }
 
 export default Register;
