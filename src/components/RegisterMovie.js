@@ -1,49 +1,51 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import './../App.css';
 import axios from 'axios';
+import { async } from 'q';
 
-class Register extends Component{
-    constructor(){
+class Register extends Component {
+    constructor() {
         super();
-        this.state={
-            name:"",
-            director:"",
-            studio:"",
-            posterURL:""
+        this.state = {
+            name: "",
+            director: "",
+            studio: "",
+            posterURL: ""
         };
 
-        this.handleInputChange  = this.handleInputChange.bind(this);
-        this.handleRegister     = this.handleRegister.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleRegister = this.handleRegister.bind(this);
     };
 
     handleRegister(e) {
         e.preventDefault();
         /*this.props.onAddTodo(this.state);*/
-        if(this.state.name!=="" && 
-        this.state.director!=="" && 
-        this.state.studio!=="" &&
-        this.state.posterURL!==""){
+        if (this.state.name !== "" &&
+            this.state.director !== "" &&
+            this.state.studio !== "" &&
+            this.state.posterURL !== "") {
+            funcRegisterMovie();
             alert("Sos un genio. Creaste una pelicula..!!");
-        }else{
+        } else {
             alert("Quedaron campos vacios.!");
         }
         this.setState({
-            name:"",
-            director:"",
-            studio:"",
-            posterURL:""
+            name: "",
+            director: "",
+            studio: "",
+            posterURL: ""
         });
     }
 
     handleInputChange(e) {
-        const {value, name} = e.target;
+        const { value, name } = e.target;
         console.log(value, name);
         this.setState({
-          [name]: value
+            [name]: value
         });
     }
-    render(){
-        return  (
+    render() {
+        return (
             <div className="App">
                 <div className="container" id="register-container">
                     <div className="col align-items-center">
@@ -51,7 +53,7 @@ class Register extends Component{
                             <div className="panel panel-default">
                                 <div className="panel-heading">
                                 </div>
-                                <div className="panel-body card">
+                                <div className="panel-body card" style={{backgroundColor: "#343a40"}}>
                                     <form role="form" className="card-body">
                                         <div className="row">
                                             <div className="col-xs-6 col-sm-6 col-md-6">
@@ -91,7 +93,7 @@ class Register extends Component{
                                                 onChange={this.handleInputChange}
                                                 placeholder="Studio"
                                             />
-                                        </div>                                        
+                                        </div>
                                         <div className="form-group">
                                             <input
                                                 type="text"
@@ -102,7 +104,7 @@ class Register extends Component{
                                                 onChange={this.handleInputChange}
                                                 placeholder="PosterURL"
                                             />
-                                        </div>                                        
+                                        </div>
                                         <div className="row">
                                             <button
                                                 type="submit"
@@ -118,11 +120,11 @@ class Register extends Component{
                     </div>
                 </div>
             </div>
-            );
+        );
     }
 }
 
-function funcRegisterMovie(){
+async function funcRegisterMovie() {
     var urlMov = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/registerMovie";
     var urlPos = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/registerMoviePoster";
 
@@ -131,26 +133,87 @@ function funcRegisterMovie(){
     let studio = document.getElementById("studio").value;
     let posterUrl = document.getElementById("posterURL").value;
 
-    let jsonMovieValue = {name: name, director: director, studio: studio}
+    let jsonMovieValue = { name: name, director: director, studio: studio }
 
     axios.post(urlMov, jsonMovieValue).then(res => {
-        if(res){
+        if (res) {
             alert("Película registrada.");
-        }else{
+        } else {
             alert("Se produjo un error.");
         }
     })
+
+    
+
+    /*let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve(funcGetMovie(name)), 1000)
+      });
+
+    let movie = await promise;
+    
+    console.log(movie);
+    console.log("El valor despues del metodo es:" + movie);
+    console.log("hola");*/
+
+    let ROOT = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/";
+    let URL = ROOT + "GetMovie/" + name;
+    let movie;
+    let getMovie = async () => {
+        let res = axios.get(URL);
+        let { data } = res.data;
+        movie = data;
+    };
+
+    console.log(movie);
+    
+
+    /*setTimeout(() => {
+
+        console.log(movie);
+        //let idMovie = movie.movie_ID;
+
+        console.log(idMovie);
+
+        let jsonMoviePosterValue = {movie_ID: idMovie, presale_ID: 1, premiere_ID: 1, title:name, url_POSTER: posterUrl};
+
+        axios.post(urlPos, jsonMoviePosterValue).then(res => {
+            if(res){
+                alert("Poster de la película registrado.");
+            }else{
+                alert("Se produjo un error.");
+            }
+        })
+
+    }, 2000);*/
 }
 
-function funcGetMovie(name){
+async function funcGetMovie(name) {
+
     let ROOT = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/";
-    let URL = ROOT + "GetMovie/"+name;
+    let URL = ROOT + "GetMovie/" + name;
     let movie = {};
-    axios.get(URL).then(res => {
 
-        movie = res.data;
-
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve(
+            axios.get(URL).then(res => {
+                movie = res.data;
+                //console.log("En el res");
+                //console.log(movie);
+            })
+        ), 1000)
       });
+    
+    
+    /*setTimeout(() => {
+        
+        console.log("Despues del res");
+        console.log("El valor de movies es: " + movie);
+
+     }, 3000);
+     
+     setTimeout(() => {}, 10000);*/
+
+     return movie;
 }
 
 export default Register;

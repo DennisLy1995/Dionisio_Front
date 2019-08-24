@@ -60,7 +60,7 @@ class Register extends Component{
                             <div className="panel panel-default">
                                 <div className="panel-heading">
                                 </div>
-                                <div className="panel-body card">
+                                <div className="panel-body card" style={{backgroundColor: "#343a40"}}>
                                     <form role="form" className="card-body">
                                         <div className="row">
                                             <div className="col-xs-6 col-sm-6 col-md-6">
