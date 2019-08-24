@@ -16,9 +16,9 @@ class Login extends Component{
     handleLogin(e) {
         e.preventDefault();
         /*this.props.onAddTodo(this.state);*/
-        if(this.state.email !== ""){
-            this.state.redirectRegister=true;
-            FuncLogin();
+        if(this.state.email !== "" &&
+        this.state.password !== ""){
+          FuncLogin();
         }else{
             alert("Olvidaste llenar uno de los campos!!!");
         }
@@ -53,6 +53,17 @@ class Login extends Component{
                       placeholder="Email"
                     />
                   </div>
+                  <div className="form-group">
+                    <input
+                      id="password"
+                      type="password"
+                      name="password"
+                      className="form-control"
+                      value={this.state.password}
+                      onChange={this.handleInputChange}
+                      placeholder="Password"
+                    />
+                  </div>
                   <div className="row">
                     <button
                       id="buttonLogin"
@@ -76,14 +87,28 @@ class Login extends Component{
 
 function FuncLogin(){
 
-  var response;
-  
   let email = document.getElementById("email").value;
-  var URL = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/GetAccount/"+email;
+  var ROOT = "http://dionisio-env.yenwtnrkxn.us-east-1.elasticbeanstalk.com/";
+  var URL = ROOT + "GetAccount/"+email;
   console.log(URL);
   axios.get(URL).then(res => {
-    
-    response = res;
+    if(res.status == 200){
+      sessionStorage.setItem("id", res.data.account_ID);
+      sessionStorage.setItem("usuario", res.data.name_ACCOUNT);
+      sessionStorage.setItem("email", res.data.email);
+      sessionStorage.setItem("role", res.data.role_ACCOUNT);
+
+      URL = ROOT + "/getEmailByID/"+ email;
+      axios.get().then(res => {
+
+        console.log(res);
+
+      });
+
+
+    }else{
+      alert("Correo no registrado.");
+    }
   
   });
   
